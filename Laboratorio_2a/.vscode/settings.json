@@ -11,7 +11,11 @@
     "idf.openOcdConfigs": [
         "board/esp32s2-kaluga-1.cfg"
     ],
-    "idf.portWin": "COM4",
+    "idf.portWin": "COM8",
     "idf.pythonBinPathWin": "C:\\Users\\juanm\\.espressif\\python_env\\idf5.0_py3.8_env\\Scripts\\python.exe",
-    "idf.toolsPathWin": "C:\\Users\\juanm\\.espressif"
+    "idf.toolsPathWin": "C:\\Users\\juanm\\.espressif",
+    "idf.flashType": "UART",
+    "files.associations": {
+        "touch_pad.h": "c"
+    }
 }

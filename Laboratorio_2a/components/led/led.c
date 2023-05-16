@@ -3,7 +3,7 @@
 
 /*funcion de seteo e inicializacion del led*/
 led_strip_t configure(){   
-    led_strip_config_t ws2812cConfig = LED_STRIP_DEFAULT_CONFIG(1, RMT_CHANNEL_0); //seteo de cantidad de leds y protocolo de comunicacion
+    led_strip_config_t ws2812cConfig = LED_STRIP_DEFAULT_CONFIG(1, RMT_CHANNEL_1); //seteo de cantidad de leds y protocolo de comunicacion
     led_strip_t *newLed = led_strip_new_rmt_ws2812(&ws2812cConfig); // nuevo led del tipo ws2812
     esp_err_t ret = led_rgb_init(&newLed); //inicializacion con retorno de tipo OK o err
     return *newLed; //devuelve el led para trabajar con el

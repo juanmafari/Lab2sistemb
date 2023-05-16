@@ -16,6 +16,8 @@
     "idf.toolsPathWin": "C:\\Users\\juanm\\.espressif",
     "idf.flashType": "UART",
     "files.associations": {
-        "touch_pad.h": "c"
+        "touch_pad.h": "c",
+        "touch_sensor.h": "c",
+        "esp_log.h": "c"
     }
 }

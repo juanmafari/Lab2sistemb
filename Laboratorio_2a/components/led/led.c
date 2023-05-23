@@ -1,47 +1,48 @@
 #include "led.h"
 
+led_strip_t *name;
 
 /*funcion de seteo e inicializacion del led*/
-led_strip_t configure(){   
+void configure(){   
     led_strip_config_t ws2812cConfig = LED_STRIP_DEFAULT_CONFIG(1, RMT_CHANNEL_0); //seteo de cantidad de leds y protocolo de comunicacion
-    led_strip_t *newLed = led_strip_new_rmt_ws2812(&ws2812cConfig); // nuevo led del tipo ws2812
-    esp_err_t ret = led_rgb_init(&newLed); //inicializacion con retorno de tipo OK o err
-    return *newLed; //devuelve el led para trabajar con el
+    name = led_strip_new_rmt_ws2812(&ws2812cConfig); // nuevo led del tipo ws2812
+    esp_err_t ret = led_rgb_init(&name); //inicializacion con retorno de tipo OK o err
+    //devuelve el led para trabajar con el
 }
 
 /*diferentes colores esenciales para su uso*/
-void white(led_strip_t *name){
+void white(){
     name->set_pixel(name, 0, 255, 255, 255);
     name->refresh(name, 500); 
 }
-void red(led_strip_t *name){
+void red(){
     name->set_pixel(name, 0, 255, 0, 0);
     name->refresh(name, 500); 
 }
-void green(led_strip_t *name){
+void green(){
     name->set_pixel(name, 0, 0, 255, 0);
     name->refresh(name, 500); 
 }
-void blue(led_strip_t *name){
+void blue(){
     name->set_pixel(name, 0, 0, 0, 255);
     name->refresh(name, 500); 
 }
-void yellow(led_strip_t *name){
+void yellow(){
     name->set_pixel(name, 0, 255, 255, 0);
     name->refresh(name, 500); 
 }
-void cyan(led_strip_t *name){
+void cyan(){
     name->set_pixel(name, 0, 0, 255, 255);
     name->refresh(name, 500); 
 }
-void magenta(led_strip_t *name){
+void magenta(){
     name->set_pixel(name, 0, 255, 0, 255);
     name->refresh(name, 500); 
 }
 
 
 /*funciones que realizan un fade in y fade out de un color especifico*/
-void redfade(led_strip_t *name){
+void redfade(){
     for (size_t i = 0; i < 256; i++)
     {
         name->set_pixel(name, 0, i, 0, 0);
@@ -54,7 +55,7 @@ void redfade(led_strip_t *name){
     }
 }
 
-void greenfade(led_strip_t *name){
+void greenfade(){
     for (size_t i = 0; i < 256; i++)
     {
         name->set_pixel(name, 0, 0, i, 0);
@@ -67,7 +68,7 @@ void greenfade(led_strip_t *name){
     }
 }
 
-void bluefade(led_strip_t *name){
+void bluefade(){
     for (size_t i = 0; i < 256; i++)
     {
         name->set_pixel(name, 0, 0, 0, i);
@@ -81,7 +82,7 @@ void bluefade(led_strip_t *name){
 }
 
 /*funcion que realiza un barrido entre colores simulando el espectro de la luz*/
-void rainbow(led_strip_t *name){
+void rainbow(){
    
     uint32_t C[3];
     static int counterArray = 0;
@@ -101,12 +102,12 @@ void rainbow(led_strip_t *name){
     }  
 }
 /*funcion para llevar el led a apagarse*/
-void clearblack(led_strip_t *name){
+void clearblack(){
     name->set_pixel(name,0,0,0,0);
     name->refresh(name, 500);
 }
 
-void hextoco(led_strip_t *name, char col[]){
+void hextoco( char col[]){
     int values[5];
     for (size_t i = 0; i < 6; i++)
     {

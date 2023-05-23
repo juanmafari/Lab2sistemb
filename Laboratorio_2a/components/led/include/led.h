@@ -8,23 +8,23 @@
 
 
 
-void white(led_strip_t *name);
-void red(led_strip_t *name);
-void green(led_strip_t *name);
-void blue(led_strip_t *name);
-void yellow(led_strip_t *name);
-void cyan(led_strip_t *name);
-void magenta(led_strip_t *name);
+void white( );
+void red();
+void green();
+void blue();
+void yellow();
+void cyan();
+void magenta();
 
-void redfade(led_strip_t *name);
-void greenfade(led_strip_t *name);
-void bluefade(led_strip_t *name);
+void redfade();
+void greenfade();
+void bluefade();
 
 
-void rainbow(led_strip_t *name);
+void rainbow();
 
-void clearblack(led_strip_t *name);
+void clearblack();
 
-void hextoco(led_strip_t *name, char col[]);
+void hextoco( char col[]);
 
-led_strip_t configure();
+void configure();

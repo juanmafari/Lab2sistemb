@@ -19,6 +19,7 @@
         "touch_pad.h": "c",
         "touch_sensor.h": "c",
         "esp_log.h": "c",
-        "soc_caps.h": "c"
+        "soc_caps.h": "c",
+        "*.tcc": "c"
     }
 }

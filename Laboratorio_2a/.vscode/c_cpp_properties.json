@@ -2,7 +2,7 @@
     "configurations": [
         {
             "name": "ESP-IDF",
-            "compilerPath": "",
+            "compilerPath": "C:\\Users\\juanm\\.espressif\\tools\\xtensa-esp32s2-elf\\esp-2022r1-11.2.0\\xtensa-esp32s2-elf\\bin\\xtensa-esp32s2-elf-gcc.exe",
             "includePath": [
                 "${config:idf.espIdfPath}/components/**",
                 "${config:idf.espIdfPathWin}/components/**",

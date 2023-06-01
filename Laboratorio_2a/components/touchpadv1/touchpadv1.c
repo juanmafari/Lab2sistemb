@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdio.h>
-#include <inttypes.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/queue.h"
-#include "esp_log.h"
-#include "driver/touch_pad.h"
-#include "soc/rtc_periph.h"
-#include "soc/sens_periph.h"
-#include "led.h"
+#include "touchpadv1.h"
 
 
 const char *TAG = "Touch pad";
@@ -109,7 +99,6 @@ void tp_example_read_task(void *pvParameter)
             continue;
         }
         if (evt.intr_mask & TOUCH_PAD_INTR_MASK_ACTIVE) {
-            /* if guard pad be touched, other pads no response. */
             if (evt.pad_num == button[2]) {
                 ESP_LOGW(TAG, "TouchSensor [%"PRIu32"] be activated, red", evt.pad_num);
                 red();
@@ -141,7 +130,6 @@ void tp_example_read_task(void *pvParameter)
             }
         }
         if (evt.intr_mask & TOUCH_PAD_INTR_MASK_INACTIVE) {
-            /* if guard pad be touched, other pads no response. */
             
                     ESP_LOGI(TAG, "TouchSensor [%"PRIu32"] be inactivated, status mask 0x%"PRIu32, evt.pad_num, evt.pad_status);
                     white();
@@ -155,11 +143,11 @@ void tp_example_read_task(void *pvParameter)
             /* Add your exception handling in here. */
             ESP_LOGI(TAG, "Touch sensor channel %"PRIu32" measure timeout. Skip this exception channel!!", evt.pad_num);
             touch_pad_timeout_resume(); // Point on the next channel to measure.
-        }
     }
+}
 
 
-void todo(void){
+void touchPadStart(void){
     
     if (que_touch == NULL) {
         que_touch = xQueueCreate(TOUCH_BUTTON_NUM, sizeof(touch_event_t));
@@ -189,5 +177,3 @@ void todo(void){
     // Start a task to show what pads have been touched
     xTaskCreate(&tp_example_read_task, "touch_pad_read_task", 4096, NULL, 5, NULL);
 }
-
-

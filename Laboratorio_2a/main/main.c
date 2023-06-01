@@ -21,5 +21,5 @@ void app_main(void)
 {
     configure();
     white();
-    todo();
+    touchPadStart();
 }
